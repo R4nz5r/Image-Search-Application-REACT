@@ -1,35 +1,20 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Images from "./components/Images";
+import Jumbutton from "./components/Jumbutton";
+import SearchField from "./components/SearchField";
+import useAiox from "./hooks/useAiox";
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+
+  const { response, isLoading, error, fetchData } = useAiox(`search/photos ?page=1&query=office&client_id=${import.meta.env.REACT_APP_ACCESS_KEY}`);
+
+  console.log(response);
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Jumbutton>
+        <SearchField />
+      </Jumbutton>
+      <Images />
     </>
-  )
+  );
 }
-
-export default App
