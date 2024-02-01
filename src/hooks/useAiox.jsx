@@ -6,7 +6,7 @@ const useAiox = (param) => {
   const [isLoading, setIsLoading] = useState([]);
   const [error, setError] = useState('');
 
-  axios.defaults.baseURL = 'https://api.unsplash.com';
+  axios.defaults.baseURL ='https://api.unsplash.com/';
 
   const fetchData = async (url) => {
     try {
